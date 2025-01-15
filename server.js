@@ -11,6 +11,7 @@ const verifyToken = require('./middlewares/verifyToken');
 dotenv.config();
 
 const app = express();
+const url = process.env.URL || 'http://localhost:3004';
 
 // Define CORS options
 const corsOptions = {
@@ -18,7 +19,6 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed methods
   credentials: true,  // Allow cookies to be sent
 };
-
 // Use CORS middleware with custom options
 app.use(cors(corsOptions));
 
@@ -28,11 +28,7 @@ app.use(bodyParser.json());
 // Connect to Database
 connectDB();
 
-// Routes
-app.get('/', (req, res) => {
-  res.send('Welcome to the server!');
-});
-
+@@ -37,46 +37,10 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
 
