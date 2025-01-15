@@ -35,3 +35,10 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
+
+// Create an HTTP server
+const server = http.createServer(app);
+// Start Server
+server.listen(url, () => {
+  console.log(`Server running on ${url}`);
+});
