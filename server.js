@@ -11,7 +11,6 @@ const verifyToken = require('./middlewares/verifyToken');
 dotenv.config();
 
 const app = express();
-const url = process.env.URL || 'http://localhost:3004';
 
 // Define CORS options
 const corsOptions = {
@@ -36,11 +35,3 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
-
-// Create an HTTP server
-const server = http.createServer(app);
-
-// Start Server
-server.listen(url, () => {
-  console.log(`Server running on ${url}`);
-});
